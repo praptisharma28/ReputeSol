@@ -1,0 +1,17 @@
+.anchor
+.DS_Store
+target
+**/*.rs.bk
+node_modules
+test-ledger
+.yarn
+
+# Keypair files
+*.json
+!package.json
+!tsconfig.json
+!Anchor.toml
+
+# Environment files
+.env
+.env.local
