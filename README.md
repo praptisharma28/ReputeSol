@@ -10,12 +10,6 @@ On-chain reputation system for Solana that aggregates Gitcoin Passport and Solan
 - **Explorer**: https://explorer.solana.com/address/3jSgCkDsvWqaffHHy3wKJ6jYqXo2zxhVbg81gUbMhwgL?cluster=devnet
 - **Authority Wallet**: `GWdzG4dfvjentgRnTX3rVNZBNQA7b67wTxMqvLi5WBaR`
 
-### Test Results
-- ✅ 8/10 tests passing on devnet
-- ✅ User initialization working
-- ✅ Score updates with authority validation
-- ✅ Input validation (scores 0-100)
-- ✅ Weighted scoring (50% Gitcoin + 50% Solana)
 
 ## Project Structure
 
