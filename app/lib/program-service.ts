@@ -107,6 +107,7 @@ export async function getUserScore(walletAddress: string): Promise<UserAccountDa
   const [userPDA] = getUserPDA(wallet);
 
   try {
+    // @ts-ignore - Dynamic IDL loading doesn't have typed accounts
     const accountData = await program.account.userAccount.fetch(userPDA);
 
     return {

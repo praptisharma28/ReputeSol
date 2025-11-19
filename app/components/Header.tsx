@@ -19,8 +19,14 @@ export function Header() {
         </Link>
 
         <nav className="flex items-center gap-6">
-          <Link href="/dashboard" className="hover:opacity-70 transition">
+          <Link href="/dashboard" className="font-semibold hover:opacity-70 transition">
             Dashboard
+          </Link>
+          <Link href="/leaderboard" className="font-semibold hover:opacity-70 transition">
+            Leaderboard
+          </Link>
+          <Link href="/compare" className="font-semibold hover:opacity-70 transition">
+            Compare
           </Link>
           <WalletMultiButton className="!bg-black !hover:bg-gray-800" />
         </nav>

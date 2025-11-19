@@ -7,6 +7,8 @@
  * Black background, white text for emphasis
  */
 
+import { Badge } from './Badge';
+
 interface ScoreCardProps {
   score: number;
   maxScore: number;
@@ -24,6 +26,10 @@ export function ScoreCard({ score, maxScore }: ScoreCardProps) {
       </h2>
       <div className="text-8xl font-bold mb-2">{displayScore}</div>
       <div className="text-xl opacity-70">out of 100</div>
+
+      <div className="mt-6 flex justify-center">
+        <Badge score={score / 100} size="lg" />
+      </div>
 
       <div className="mt-8 flex justify-center gap-4 text-sm">
         <div>
