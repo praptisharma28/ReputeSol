@@ -1,11 +1,13 @@
 use anchor_lang::prelude::*;
 use crate::state::UserAccount;
+use crate::constants::AUTHORITY;
+use crate::errors::ErrorCode;
 
 //intialize a new reputation account for a user
 pub fn initialize_user(ctx: Context<InitializeUser>)-> Result<()>{
     let user_account = &mut ctx.accounts.user_account;
     let clock = Clock::get()?;
-    user_account.owner = ctx.accounts.owner.key();
+    user_account.owner = *ctx.accounts.owner.key;
     user_account.total_score = 0;
     user_account.gitcoin_score=0;
     user_account.solana_score=0;
@@ -17,16 +19,22 @@ pub fn initialize_user(ctx: Context<InitializeUser>)-> Result<()>{
 }
 
 #[derive(Accounts)]
+#[instruction()]
 pub struct InitializeUser<'info>{
     #[account(
         init,
-        payer = owner,
+        payer = authority,
         space = UserAccount::LEN,
         seeds = [b"user", owner.key().as_ref()],
         bump
     )]
     pub user_account: Account<'info, UserAccount>,
-    #[account(mut)]
-    pub owner: Signer<'info>,
+    /// CHECK: This is the wallet we're creating an account for (not a signer)
+    pub owner: AccountInfo<'info>,
+    #[account(
+        mut,
+        constraint = authority.key() == AUTHORITY @ ErrorCode::Unauthorized
+    )]
+    pub authority: Signer<'info>,
     pub system_program: Program<'info, System>,
 }

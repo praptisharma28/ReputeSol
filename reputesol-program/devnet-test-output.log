@@ -1,0 +1,50 @@
+    Finished `release` profile [optimized] target(s) in 0.23s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.21s
+     Running unittests src/lib.rs (/Users/praps/Downloads/ReputeSol/reputesol-program/target/debug/deps/reputesol_program-71c54487f19eba4d)
+
+Found a 'test' script in the Anchor.toml. Running it as a test suite!
+
+Running test suite: "/Users/praps/Downloads/ReputeSol/reputesol-program/Anchor.toml"
+
+(node:44105) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/praps/Downloads/ReputeSol/reputesol-program/tests/reputesol-program.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/praps/Downloads/ReputeSol/reputesol-program/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+  ReputeSol Program Tests
+Server responded with 429 Too Many Requests.  Retrying after 500ms delay...
+Server responded with 429 Too Many Requests.  Retrying after 1000ms delay...
+Server responded with 429 Too Many Requests.  Retrying after 2000ms delay...
+Server responded with 429 Too Many Requests.  Retrying after 4000ms delay...
+    1) "before all" hook in "ReputeSol Program Tests"
+
+✅ All tests completed!
+
+  reputesol-program
+    2) Is initialized!
+
+
+  0 passing (10s)
+  2 failing
+
+  1) ReputeSol Program Tests
+       "before all" hook in "ReputeSol Program Tests":
+     Error: 429 Too Many Requests:  {"jsonrpc":"2.0","error":{"code": 429, "message":"You've either reached your airdrop limit today or the airdrop faucet has run dry. Please visit https://faucet.solana.com for alternate sources of test SOL"}, "id": "801280b3-870c-4755-84e7-6bd720fb0281" } 
+
+      at ClientBrowser.callServer (node_modules/@solana/web3.js/src/connection.ts:1703:18)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  2) reputesol-program
+       Is initialized!:
+     TypeError: program.methods.initialize is not a function
+      at /Users/praps/Downloads/ReputeSol/reputesol-program/tests/reputesol-program.ts:13:38
+      at Generator.next (<anonymous>)
+      at /Users/praps/Downloads/ReputeSol/reputesol-program/tests/reputesol-program.ts:41:71
+      at new Promise (<anonymous>)
+      at __awaiter (tests/reputesol-program.ts:37:12)
+      at Context.<anonymous> (tests/reputesol-program.ts:11:36)
+      at processImmediate (node:internal/timers:505:21)
+
+
+

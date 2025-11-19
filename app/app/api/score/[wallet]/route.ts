@@ -16,10 +16,10 @@ import { getUserScore } from '@/lib/program-service';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { wallet: string } }
+  { params }: { params: Promise<{ wallet: string }> }
 ) {
   try {
-    const wallet = params.wallet;
+    const { wallet } = await params;
 
     console.log(`[API] GET /api/score/${wallet}`);
 

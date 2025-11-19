@@ -9,22 +9,21 @@ use instructions::*;
 
 declare_id!("3jSgCkDsvWqaffHHy3wKJ6jYqXo2zxhVbg81gUbMhwgL");
 
-
 #[program]
 pub mod reputesol_program {
     use super::*;
 
-    pub fn initialize(ctx: Context<InitializeUser>) -> Result<()> {
+    /// Initialize a new user reputation account
+    pub fn initialize_user(ctx: Context<InitializeUser>) -> Result<()> {
         instructions::initialize_user(ctx)
     }
+
+    /// Update a user's reputation scores (authority only)
     pub fn update_score(
         ctx: Context<UpdateScore>,
         gitcoin_score: u16,
-        solana_core: u16,
+        solana_score: u16,
     ) -> Result<()> {
-        instructions::update_score(ctx, gitcoin_score, solana_core)
+        instructions::update_score(ctx, gitcoin_score, solana_score)
     }
 }
-
-#[derive(Accounts)]
-pub struct Initialize {}

@@ -1,7 +1,28 @@
 import { Connection, PublicKey, Keypair } from '@solana/web3.js';
-import { Program, AnchorProvider, Wallet } from '@coral-xyz/anchor';
+import { Program, AnchorProvider } from '@coral-xyz/anchor';
 import fs from 'fs';
 import path from 'path';
+
+// Simple Wallet implementation for Anchor Provider
+class NodeWallet {
+  constructor(readonly payer: Keypair) {}
+
+  async signTransaction(tx: any) {
+    tx.partialSign(this.payer);
+    return tx;
+  }
+
+  async signAllTransactions(txs: any[]) {
+    return txs.map((tx) => {
+      tx.partialSign(this.payer);
+      return tx;
+    });
+  }
+
+  get publicKey() {
+    return this.payer.publicKey;
+  }
+}
 
 /**
  * Solana RPC Connection
@@ -33,8 +54,8 @@ export async function getProgram() {
   const authority = getAuthorityKeypair();
 
   // Create provider (Anchor needs this to sign transactions)
-  const wallet = new Wallet(authority);
-  const provider = new AnchorProvider(connection, wallet, {
+  const wallet = new NodeWallet(authority);
+  const provider = new AnchorProvider(connection, wallet as any, {
     commitment: 'confirmed',
   });
 
@@ -48,7 +69,10 @@ export async function getProgram() {
   );
   const idl = JSON.parse(fs.readFileSync(idlPath, 'utf-8'));
 
-  const program = new Program(idl, programId, provider);
+  // Set the program ID in the IDL
+  idl.address = programId.toString();
+
+  const program = new Program(idl, provider);
   return { program, provider, authority };
 }
 

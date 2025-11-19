@@ -1,0 +1,165 @@
+
+Found a 'test' script in the Anchor.toml. Running it as a test suite!
+
+Running test suite: "/Users/praps/Downloads/ReputeSol/reputesol-program/Anchor.toml"
+
+(node:46344) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/praps/Downloads/ReputeSol/reputesol-program/tests/reputesol-program.test.ts is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/praps/Downloads/ReputeSol/reputesol-program/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+  ReputeSol Program Tests
+
+⚠️  AIRDROP NEEDED:
+Test User Wallet: 6rVaCH1gCAVYojVSWn8JjuzukWR68utq5SFPcygY3UNm
+Go to https://faucet.solana.com and airdrop 1-2 SOL
+Waiting 30 seconds for airdrop...
+
+
+🧪 Test Setup:
+  Program ID: 3jSgCkDsvWqaffHHy3wKJ6jYqXo2zxhVbg81gUbMhwgL
+  Test User: 6rVaCH1gCAVYojVSWn8JjuzukWR68utq5SFPcygY3UNm
+  Authority: GWdzG4dfvjentgRnTX3rVNZBNQA7b67wTxMqvLi5WBaR
+  User PDA: Hb4ZbdoKN6BuzxJWYYFVVWa7Yn1Ejo1wL651reCM8x9V
+    Initialize User
+
+📝 Test: Initialize User
+      1) Successfully initializes a new user account
+
+📝 Test: Prevent Double Initialization
+  ✅ Correctly prevented double initialization
+      ✔ Fails to initialize the same user twice (353ms)
+    Update Score
+
+📝 Test: Update Score (Valid)
+      2) Successfully updates score with valid data
+
+📝 Test: Multiple Score Updates
+      3) Updates score multiple times correctly
+
+📝 Test: Edge Case - Zero Scores
+      4) Correctly handles edge case: all zeros
+
+📝 Test: Edge Case - Max Scores
+      5) Correctly handles edge case: maximum scores
+    Authorization & Security
+
+📝 Test: Unauthorized Update Attempt
+Server responded with 429 Too Many Requests.  Retrying after 500ms delay...
+Server responded with 429 Too Many Requests.  Retrying after 1000ms delay...
+Server responded with 429 Too Many Requests.  Retrying after 2000ms delay...
+Server responded with 429 Too Many Requests.  Retrying after 4000ms delay...
+      6) Fails when unauthorized user tries to update score
+    Input Validation
+
+📝 Test: Invalid Gitcoin Score
+  ✅ Correctly rejected invalid Gitcoin score (150)
+      7) Fails with invalid Gitcoin score (> 100)
+
+📝 Test: Invalid Solana Score
+  ✅ Correctly rejected invalid Solana score (200)
+      8) Fails with invalid Solana score (> 100)
+    Score Calculation Logic
+
+📝 Test: Weighted Scoring Formula
+      9) Verifies weighted scoring formula
+
+✅ All tests completed!
+
+
+  1 passing (43s)
+  9 failing
+
+  1) ReputeSol Program Tests
+       Initialize User
+         Successfully initializes a new user account:
+     Simulation failed. 
+Message: Transaction simulation failed: Error processing Instruction 0: custom program error: 0x1. 
+Logs: 
+[
+  "Program 3jSgCkDsvWqaffHHy3wKJ6jYqXo2zxhVbg81gUbMhwgL invoke [1]",
+  "Program log: Instruction: InitializeUser",
+  "Program 11111111111111111111111111111111 invoke [2]",
+  "Transfer: insufficient lamports 0, need 1315440",
+  "Program 11111111111111111111111111111111 failed: custom program error: 0x1",
+  "Program 3jSgCkDsvWqaffHHy3wKJ6jYqXo2zxhVbg81gUbMhwgL consumed 5613 of 200000 compute units",
+  "Program 3jSgCkDsvWqaffHHy3wKJ6jYqXo2zxhVbg81gUbMhwgL failed: custom program error: 0x1"
+]. 
+Catch the `SendTransactionError` and call `getLogs()` on it for full details.
+  
+
+  2) ReputeSol Program Tests
+       Update Score
+         Successfully updates score with valid data:
+     Error: AnchorError caused by account: user_account. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized.
+      at AnchorError.parse (node_modules/@coral-xyz/anchor/src/error.ts:168:14)
+      at translateError (node_modules/@coral-xyz/anchor/src/error.ts:277:35)
+      at MethodsBuilder.rpc [as _rpcFn] (node_modules/@coral-xyz/anchor/src/program/namespace/rpc.ts:35:29)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  3) ReputeSol Program Tests
+       Update Score
+         Updates score multiple times correctly:
+     Error: AnchorError caused by account: user_account. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized.
+      at AnchorError.parse (node_modules/@coral-xyz/anchor/src/error.ts:168:14)
+      at translateError (node_modules/@coral-xyz/anchor/src/error.ts:277:35)
+      at MethodsBuilder.rpc [as _rpcFn] (node_modules/@coral-xyz/anchor/src/program/namespace/rpc.ts:35:29)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  4) ReputeSol Program Tests
+       Update Score
+         Correctly handles edge case: all zeros:
+     Error: AnchorError caused by account: user_account. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized.
+      at AnchorError.parse (node_modules/@coral-xyz/anchor/src/error.ts:168:14)
+      at translateError (node_modules/@coral-xyz/anchor/src/error.ts:277:35)
+      at MethodsBuilder.rpc [as _rpcFn] (node_modules/@coral-xyz/anchor/src/program/namespace/rpc.ts:35:29)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  5) ReputeSol Program Tests
+       Update Score
+         Correctly handles edge case: maximum scores:
+     Error: AnchorError caused by account: user_account. Error Code: AccountNotInitialized. Error Number: 3012. Error Message: The program expected this account to be already initialized.
+      at AnchorError.parse (node_modules/@coral-xyz/anchor/src/error.ts:168:14)
+      at translateError (node_modules/@coral-xyz/anchor/src/error.ts:277:35)
+      at MethodsBuilder.rpc [as _rpcFn] (node_modules/@coral-xyz/anchor/src/program/namespace/rpc.ts:35:29)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  6) ReputeSol Program Tests
+       Authorization & Security
+         Fails when unauthorized user tries to update score:
+     Error: 429 Too Many Requests:  {"jsonrpc":"2.0","error":{"code": 429, "message":"You've either reached your airdrop limit today or the airdrop faucet has run dry. Please visit https://faucet.solana.com for alternate sources of test SOL"}, "id": "86e6c012-bf51-48a6-b32d-7a7a9eb94316" } 
+
+      at ClientBrowser.callServer (node_modules/@solana/web3.js/src/connection.ts:1703:18)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  7) ReputeSol Program Tests
+       Input Validation
+         Fails with invalid Gitcoin score (> 100):
+     AssertionError: Should return InvalidScore error: expected 'Error: Signature verification failed.…' to include 'InvalidScore'
+      at /Users/praps/Downloads/ReputeSol/reputesol-program/tests/reputesol-program.test.ts:295:16
+      at Generator.throw (<anonymous>)
+      at rejected (tests/reputesol-program.test.ts:39:65)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  8) ReputeSol Program Tests
+       Input Validation
+         Fails with invalid Solana score (> 100):
+     AssertionError: Should return InvalidScore error: expected 'Error: Signature verification failed.…' to include 'InvalidScore'
+      at /Users/praps/Downloads/ReputeSol/reputesol-program/tests/reputesol-program.test.ts:318:16
+      at Generator.throw (<anonymous>)
+      at rejected (tests/reputesol-program.test.ts:39:65)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+
+  9) ReputeSol Program Tests
+       Score Calculation Logic
+         Verifies weighted scoring formula:
+     Error: Signature verification failed.
+Missing signature for public key [`GWdzG4dfvjentgRnTX3rVNZBNQA7b67wTxMqvLi5WBaR`].
+      at Transaction.serialize (node_modules/@solana/web3.js/src/transaction/legacy.ts:828:15)
+      at AnchorProvider.sendAndConfirm (node_modules/@coral-xyz/anchor/src/provider.ts:164:22)
+      at processTicksAndRejections (node:internal/process/task_queues:105:5)
+      at MethodsBuilder.rpc [as _rpcFn] (node_modules/@coral-xyz/anchor/src/program/namespace/rpc.ts:29:16)
+
+
+

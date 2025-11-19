@@ -36,6 +36,7 @@ export async function initializeUserAccount(walletAddress: string): Promise<stri
       .accounts({
         userAccount: userPDA,
         owner: wallet,
+        authority: authority.publicKey,
         systemProgram: SystemProgram.programId,
       })
       .rpc();
